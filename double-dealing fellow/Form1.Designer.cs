@@ -37,26 +37,15 @@
             this.startNewGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.artificialIntelligenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.topToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.humanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.computerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.humanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.computerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personVsPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prsonVsPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Sp_Date = new System.Windows.Forms.ToolStripStatusLabel();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.Sp_Count = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.MenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,108 +106,29 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.artificialIntelligenceToolStripMenuItem,
-            this.playersToolStripMenuItem,
-            this.timerToolStripMenuItem});
+            this.personVsPersonToolStripMenuItem,
+            this.prsonVsPCToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "Options";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.optionsToolStripMenuItem.Text = "Players";
             // 
-            // artificialIntelligenceToolStripMenuItem
+            // personVsPersonToolStripMenuItem
             // 
-            this.artificialIntelligenceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lowToolStripMenuItem,
-            this.mediumToolStripMenuItem});
-            this.artificialIntelligenceToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("artificialIntelligenceToolStripMenuItem.Image")));
-            this.artificialIntelligenceToolStripMenuItem.Name = "artificialIntelligenceToolStripMenuItem";
-            this.artificialIntelligenceToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.artificialIntelligenceToolStripMenuItem.Text = "Artificial intelligence";
+            this.personVsPersonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("personVsPersonToolStripMenuItem.Image")));
+            this.personVsPersonToolStripMenuItem.Name = "personVsPersonToolStripMenuItem";
+            this.personVsPersonToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.personVsPersonToolStripMenuItem.Tag = "Person";
+            this.personVsPersonToolStripMenuItem.Text = "Person vs Person";
+            this.personVsPersonToolStripMenuItem.Click += new System.EventHandler(this.personVsPersonToolStripMenuItem_Click);
             // 
-            // lowToolStripMenuItem
+            // prsonVsPCToolStripMenuItem
             // 
-            this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
-            this.lowToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.lowToolStripMenuItem.Text = "Low";
-            // 
-            // mediumToolStripMenuItem
-            // 
-            this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
-            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.mediumToolStripMenuItem.Text = "Medium";
-            // 
-            // playersToolStripMenuItem
-            // 
-            this.playersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.topToolStripMenuItem,
-            this.bottomToolStripMenuItem});
-            this.playersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("playersToolStripMenuItem.Image")));
-            this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
-            this.playersToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.playersToolStripMenuItem.Text = "Players";
-            // 
-            // topToolStripMenuItem
-            // 
-            this.topToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.humanToolStripMenuItem,
-            this.computerToolStripMenuItem});
-            this.topToolStripMenuItem.Name = "topToolStripMenuItem";
-            this.topToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.topToolStripMenuItem.Text = "Top";
-            // 
-            // humanToolStripMenuItem
-            // 
-            this.humanToolStripMenuItem.Name = "humanToolStripMenuItem";
-            this.humanToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.humanToolStripMenuItem.Text = "Human";
-            // 
-            // computerToolStripMenuItem
-            // 
-            this.computerToolStripMenuItem.Name = "computerToolStripMenuItem";
-            this.computerToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.computerToolStripMenuItem.Text = "Computer";
-            // 
-            // bottomToolStripMenuItem
-            // 
-            this.bottomToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.humanToolStripMenuItem1,
-            this.computerToolStripMenuItem1});
-            this.bottomToolStripMenuItem.Name = "bottomToolStripMenuItem";
-            this.bottomToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.bottomToolStripMenuItem.Text = "Bottom";
-            // 
-            // humanToolStripMenuItem1
-            // 
-            this.humanToolStripMenuItem1.Name = "humanToolStripMenuItem1";
-            this.humanToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
-            this.humanToolStripMenuItem1.Text = "Human";
-            // 
-            // computerToolStripMenuItem1
-            // 
-            this.computerToolStripMenuItem1.Name = "computerToolStripMenuItem1";
-            this.computerToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
-            this.computerToolStripMenuItem1.Text = "Computer";
-            // 
-            // timerToolStripMenuItem
-            // 
-            this.timerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.onToolStripMenuItem,
-            this.setToolStripMenuItem});
-            this.timerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("timerToolStripMenuItem.Image")));
-            this.timerToolStripMenuItem.Name = "timerToolStripMenuItem";
-            this.timerToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.timerToolStripMenuItem.Text = "Timer";
-            // 
-            // onToolStripMenuItem
-            // 
-            this.onToolStripMenuItem.Name = "onToolStripMenuItem";
-            this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
-            this.onToolStripMenuItem.Text = "Off";
-            // 
-            // setToolStripMenuItem
-            // 
-            this.setToolStripMenuItem.Name = "setToolStripMenuItem";
-            this.setToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
-            this.setToolStripMenuItem.Text = "Set";
+            this.prsonVsPCToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("prsonVsPCToolStripMenuItem.Image")));
+            this.prsonVsPCToolStripMenuItem.Name = "prsonVsPCToolStripMenuItem";
+            this.prsonVsPCToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.prsonVsPCToolStripMenuItem.Tag = "PC";
+            this.prsonVsPCToolStripMenuItem.Text = "Person vs PC";
+            this.prsonVsPCToolStripMenuItem.Click += new System.EventHandler(this.prsonVsPCToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -260,18 +170,18 @@
             this.Sp_Date.Size = new System.Drawing.Size(118, 17);
             this.Sp_Date.Text = "toolStripStatusLabel1";
             // 
+            // Sp_Count
+            // 
+            this.Sp_Count.Name = "Sp_Count";
+            this.Sp_Count.Size = new System.Drawing.Size(118, 17);
+            this.Sp_Count.Text = "toolStripStatusLabel1";
+            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Double-dealing fellow\r\n";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
-            // 
-            // Sp_Count
-            // 
-            this.Sp_Count.Name = "Sp_Count";
-            this.Sp_Count.Size = new System.Drawing.Size(118, 17);
-            this.Sp_Count.Text = "toolStripStatusLabel1";
             // 
             // MainBoard
             // 
@@ -309,26 +219,15 @@
         private System.Windows.Forms.ToolStripMenuItem startNewGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem artificialIntelligenceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mediumToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem topToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bottomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem humanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem computerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem humanToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem computerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem rulesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem timerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem onToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel Sp_Date;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripStatusLabel Sp_Count;
+        private System.Windows.Forms.ToolStripMenuItem personVsPersonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prsonVsPCToolStripMenuItem;
     }
 }
 

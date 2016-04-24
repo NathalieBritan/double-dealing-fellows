@@ -12,175 +12,49 @@ namespace double_dealing_fellow
 {
     public partial class MainBoard : Form
     {
-        public string active_player{get; private set;}
-        private KeyVal<bool, Checker>[,] board = new KeyVal<bool, Checker>[6, 6];
-        private Player first_player;
-        private Player second_player;
+        private bool pc_player = false;
+        private Bitmap rb_on;
+        private Bitmap rb_off;
 
         public MainBoard()
         {
             InitializeComponent();
             Sp_Date.Text = Convert.ToString(System.DateTime.Now);
             Sp_Count.Text = "Red Player 0 : Black Player 0";
-            CheckerMove.EventHandler = new CheckerMove.MyEvent(ChangePlayer);
-            IfPlayerActive.EventHandler = new IfPlayerActive.MyEvent(CheckPlayerActivity);
-            CheckCell.EventHandler = new CheckCell.MyEvent(CheckCellFree);
-            ChangeCell.EventHandler = new ChangeCell.MyEvent(ChangeCellState);
-            ChangePlayerCount.EventHandler = new ChangePlayerCount.MyEvent(ChangePlayerTakenCells);
+            ChangeBoardCount.EventHandler = new ChangeBoardCount.MyEvent(ChangeCount);
+            rb_on = new Bitmap("D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\rb_on.png");
+            rb_off = new Bitmap("D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\rb_off.png");
         }
 
         private void startNewGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            first_player = new Player(false, ref board, 0, 5, this);
-            second_player = new Player(true, ref board, 0, 0, this);
-            first_player.active = true;
-        }
-
-        private bool CheckPlayerActivity(bool color)
-        {
-            if (color == false)
+            if(!pc_player)
             {
-                if(first_player.active)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                Game new_game = new Game(this);
             }
             else
             {
-                if (second_player.active)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                GamePC new_game = new GamePC(this);
             }
         }
 
-        private void ChangePlayer()
+        private void ChangeCount(int first_player, int second_player)
         {
-            if(first_player.active)
+            Sp_Count.Text = "Red Player " + Convert.ToString(first_player) + " : Black Player " + Convert.ToString(second_player);
+            if(first_player == 0)
             {
-                first_player.active = false;
-                second_player.active = true;
+                MessageBox.Show("Black player won!!!");
             }
             else
             {
-                second_player.active = false;
-                first_player.active = true;
+                if (second_player == 0)
+                {
+                    MessageBox.Show("Red player won!!!");
+                }
             }
+           
         }
 
-        private bool CheckCellFree(int x,int y)
-        {
-            if(board[x,y] == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private void ChangeCellState(int x_old, int y_old,int x_new, int y_new, bool color, int num)
-        {
-
-            if (num == 1)
-            {
-                board[x_new, y_new] = new KeyVal<bool, Checker>(true, board[x_old, y_old].Checker);
-                
-                if (color == false)
-                {
-                    first_player.cells_taken += 1;
-                    board[x_old, y_old].Checker = new Checker(color, x_old * 80 + 33, y_old * 80 + 56, this);
-                }
-                else
-                {
-                    second_player.cells_taken += 1;
-                    board[x_old, y_old].Checker = new Checker(color, x_old * 80 + 33, y_old * 80 + 56, this);
-                }
-
-                CatchRivalCheckers(x_new, y_new, color);
-            }
-            else
-                {
-                    board[x_new, y_new] = new KeyVal<bool, Checker>(true, board[x_old, y_old].Checker);
-                    board[x_old, y_old] = null;
-                }
-        }
-
-        private void CatchRivalCheckers(int x, int y, bool color)
-        {
-            
-            if(color == false)
-            {
-
-            }
-            if(!CheckCellFree(x + 1, y) && board[x + 1, y].Checker.color != board[x, y].Checker.color)
-            {
-                board[x + 1, y].Checker.ChangePlayer( (x + 1) * 80 + 33, y * 80 + 56);
-            }
-            if (!CheckCellFree(x + 1, y + 1) && board[x + 1, y + 1].Checker.color != board[x, y].Checker.color)
-            {
-                board[x + 1, y + 1].Checker.ChangePlayer((x + 1) * 80 + 33, (y + 1) * 80 + 56);
-            }
-            if (!CheckCellFree(x, y + 1) && board[x, y + 1].Checker.color != board[x, y].Checker.color)
-            {
-                board[x, y + 1].Checker.ChangePlayer(x * 80 + 33, (y + 1) * 80 + 56);
-            }
-            if(x>0)
-            {
-                if (!CheckCellFree(x - 1, y) && board[x - 1, y].Checker.color != board[x, y].Checker.color)
-                {
-                    board[x - 1, y].Checker.ChangePlayer((x - 1) * 80 + 33, y * 80 + 56);
-                }
-                if (!CheckCellFree(x - 1, y + 1) && board[x - 1, y + 1].Checker.color != board[x, y].Checker.color)
-                {
-                    board[x - 1, y + 1].Checker.ChangePlayer((x - 1) * 80 + 33, (y + 1) * 80 + 56);
-                }
-            }
-            if(y>0)
-            {
-                if (!CheckCellFree(x, y - 1) && board[x, y - 1].Checker.color != board[x, y].Checker.color)
-                {
-                    board[x, y - 1].Checker.ChangePlayer(x * 80 + 33, (y - 1) * 80 + 56);
-                }
-                if (!CheckCellFree(x + 1, y - 1) && board[x + 1, y - 1].Checker.color != board[x, y].Checker.color)
-                {
-                    board[x + 1, y - 1].Checker.ChangePlayer((x + 1) * 80 + 33, (y - 1) * 80 + 56);
-                }
-            }
-            if (y > 0 && x > 0)
-            {
-                if (!CheckCellFree(x - 1, y - 1) && board[x - 1, y - 1].Checker.color != board[x, y].Checker.color)
-                {
-                    board[x - 1, y - 1].Checker.ChangePlayer((x - 1) * 80 + 33, (y - 1) * 80 + 56);
-                }
-            }
-            Sp_Count.Text = "Red Player " + Convert.ToString(first_player.cells_taken) + " : Black Player " + Convert.ToString(second_player.cells_taken);
-            
-        }
-
-        public void ChangePlayerTakenCells(bool color)
-        {
-            if(color == false)
-            {
-                first_player.cells_taken += 1;
-                second_player.cells_taken -= 1;
-            }
-            else
-            {
-                first_player.cells_taken -= 1;
-                second_player.cells_taken += 1;
-            }
-        }
-      
         private void MainBoard_Deactivate(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -198,6 +72,20 @@ namespace double_dealing_fellow
                 this.ShowInTaskbar = true;
                 notifyIcon1.Visible = false;
             }
+        }
+
+        private void personVsPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pc_player = false;
+            personVsPersonToolStripMenuItem.Image = rb_on;
+            prsonVsPCToolStripMenuItem.Image = rb_off;
+        }
+
+        private void prsonVsPCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pc_player = true;
+            personVsPersonToolStripMenuItem.Image = rb_off;
+            prsonVsPCToolStripMenuItem.Image = rb_on;
         }
     }
 }

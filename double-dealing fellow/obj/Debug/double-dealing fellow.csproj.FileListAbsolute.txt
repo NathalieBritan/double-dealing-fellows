@@ -7,3 +7,12 @@ D:\Documents\University\Генетичні алгоримти\double-dealing fel
 D:\Documents\University\Генетичні алгоримти\double-dealing fellow\double-dealing fellow\obj\Debug\double-dealing fellow.csproj.GenerateResource.Cache
 D:\Documents\University\Генетичні алгоримти\double-dealing fellow\double-dealing fellow\obj\Debug\double-dealing fellow.exe
 D:\Documents\University\Генетичні алгоримти\double-dealing fellow\double-dealing fellow\obj\Debug\double-dealing fellow.pdb
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\bin\Debug\double-dealing fellow.exe.config
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\obj\Debug\double-dealing fellow.exe
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\obj\Debug\double-dealing fellow.pdb
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\bin\Debug\double-dealing fellow.exe
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\bin\Debug\double-dealing fellow.pdb
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\obj\Debug\double-dealing fellow.csprojResolveAssemblyReference.cache
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\obj\Debug\double_dealing_fellow.MainBoard.resources
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\obj\Debug\double_dealing_fellow.Properties.Resources.resources
+D:\Documents\University\ООП\double-dealing-fellows\double-dealing fellow\obj\Debug\double-dealing fellow.csproj.GenerateResource.Cache

@@ -14,8 +14,14 @@ namespace double_dealing_fellow
     class Checker
     {
         public bool color;
-        private int x;
-        private int y;
+        public int x
+        {
+            get; private set;
+        }
+        public int y
+        {
+            get; private set;
+        }
         private bool dragndrop = false;
         private PictureBox checker = new PictureBox();
         private Point loc;
@@ -39,23 +45,28 @@ namespace double_dealing_fellow
             {
                 dragndrop = false;
                 (sender as PictureBox).Cursor = System.Windows.Forms.Cursors.Default;
-                int x_old = x;
-                int y_old = y;
-                y = (sender as PictureBox).Top = ((sender as PictureBox).Top + (e.Y - loc.Y) - 16) / 80 * 80 + 53;
-                x = (sender as PictureBox).Left = ((sender as PictureBox).Left + (e.X - loc.X) + 7) / 80 * 80 + 30;
-                active = !active;
-                CheckerMove.EventHandler();
-                if (Math.Abs(((x_old - 23) / 80 - (x - 30) / 80)) == 1 || Math.Abs(((y_old - 46) / 80 - (y - 53) / 80)) == 1)
-                {
-                    ChangeCell.EventHandler((x_old - 30) / 80, (y_old - 53) / 80, (x - 30) / 80, (y - 53) / 80, color, 1);
-                }
-                else
-                {
-                    ChangeCell.EventHandler((x_old - 30) / 80, (y_old - 53) / 80, (x - 30) / 80, (y - 53) / 80, color, 2);
-                }
+                Change_Coords(((sender as PictureBox).Left + (e.X - loc.X) + 7) / 80 * 80 + 30, ((sender as PictureBox).Top + (e.Y - loc.Y) - 16) / 80 * 80 + 53);
                 return;
             }
            
+        }
+
+        public void Change_Coords(int x_new , int y_new)
+        {
+            int x_old = x;
+            int y_old = y;
+            y = checker.Top = y_new;
+            x = checker.Left = x_new;
+            active = !active;
+            if (Math.Abs(((x_old - 23) / 80 - (x - 30) / 80)) == 1 || Math.Abs(((y_old - 46) / 80 - (y - 53) / 80)) == 1)
+            {
+                ChangeCell.EventHandler((x_old - 30) / 80, (y_old - 53) / 80, (x - 30) / 80, (y - 53) / 80, color, 1);
+            }
+            else
+            {
+                ChangeCell.EventHandler((x_old - 30) / 80, (y_old - 53) / 80, (x - 30) / 80, (y - 53) / 80, color, 2);
+            }
+            CheckerMove.EventHandler();
         }
 
         private void Mouse_Move(object sender, MouseEventArgs e)
@@ -82,11 +93,11 @@ namespace double_dealing_fellow
             string pict;
             if (color == false)
             {
-                pict = "D:\\Documents\\University\\Генетичні алгоримти\\double-dealing fellow\\Pictures\\red.jpg";
+                pict = "D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\red.jpg";
             }
             else
             {
-                pict = "D:\\Documents\\University\\Генетичні алгоримти\\double-dealing fellow\\Pictures\\black.jpg";
+                pict = "D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\black.jpg";
             }
             Bitmap picture = new Bitmap(pict);
 
@@ -106,7 +117,7 @@ namespace double_dealing_fellow
             (sender as Form).Controls.Add(checker);
         }
 
-        public void ChangePlayer(int x, int y)
+        public void ChangeOwnerPlayer(int x, int y)
         {
             color = !color;
             this.x = x;
@@ -114,17 +125,16 @@ namespace double_dealing_fellow
             string pict;
             if (color == false)
             {
-                pict = "D:\\Documents\\University\\Генетичні алгоримти\\double-dealing fellow\\Pictures\\red.jpg";
+                pict = "D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\red.jpg";
                 ChangePlayerCount.EventHandler(false);
             }
             else
             {
-                pict = "D:\\Documents\\University\\Генетичні алгоримти\\double-dealing fellow\\Pictures\\black.jpg";
+                pict = "D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\black.jpg";
                 ChangePlayerCount.EventHandler(true);
             }
             Bitmap picture = new Bitmap(pict);
             checker.Image = picture;
-
         }
     }
 }

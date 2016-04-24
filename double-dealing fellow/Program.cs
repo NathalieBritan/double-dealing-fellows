@@ -63,4 +63,11 @@ namespace double_dealing_fellow
         public static MyEvent EventHandler;
     }
 
+    public static class ChangeBoardCount
+    {
+        public delegate void MyEvent(int firts_player, int second_player);
+        public static MyEvent EventHandler;
+    }
+
+
 }
