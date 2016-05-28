@@ -85,6 +85,14 @@ namespace double_dealing_fellow
             }
         }
 
+        private void Mouse_Leave(object sender, System.EventArgs t)
+        {
+            if (IfPlayerActive.EventHandler(color))
+            {
+                (sender as PictureBox).Cursor = System.Windows.Forms.Cursors.Default;
+            }
+        }
+
         public Checker(bool color, int x, int y, object sender)
         {
             this.color = color;
@@ -111,6 +119,7 @@ namespace double_dealing_fellow
             
             checker.MouseClick += Mouse_Click;
             checker.MouseMove += Mouse_Move;
+            checker.MouseLeave += Mouse_Leave;
        
             checker.Location = new Point(x, y);
        

@@ -15,6 +15,7 @@ namespace double_dealing_fellow
         private bool pc_player = false;
         private Bitmap rb_on;
         private Bitmap rb_off;
+        private Game new_game;
 
         public MainBoard()
         {
@@ -26,15 +27,15 @@ namespace double_dealing_fellow
             rb_off = new Bitmap("D:\\Documents\\University\\ООП\\double-dealing-fellows\\Pictures\\rb_off.png");
         }
 
-        private void startNewGameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(!pc_player)
+            if (!pc_player)
             {
-                Game new_game = new Game(this);
+                new_game = new Game(this);
             }
             else
             {
-                GamePC new_game = new GamePC(this);
+                new_game = new GamePC(this);
             }
         }
 
@@ -87,5 +88,7 @@ namespace double_dealing_fellow
             personVsPersonToolStripMenuItem.Image = rb_off;
             prsonVsPCToolStripMenuItem.Image = rb_on;
         }
+
+       
     }
 }
