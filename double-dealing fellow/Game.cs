@@ -22,11 +22,15 @@ namespace double_dealing_fellow
             ChangePlayerCount.EventHandler = new ChangePlayerCount.MyEvent(ChangePlayerTakenCells);
 
             this.sender = sender;
-            first_player = new Player(false, ref board, 5, 5, sender);
-            second_player = new Player(true, ref board, 0, 0, sender);
+            AddPlayers();
             first_player.active = true;
         }
 
+        protected virtual void AddPlayers()
+        {
+            first_player = new Player(false, ref board, 5, 5, sender, false);
+            second_player = new Player(true, ref board, 0, 0, sender, false);
+        }
 
         protected virtual bool CheckPlayerActivity(bool color)
         {
@@ -80,7 +84,7 @@ namespace double_dealing_fellow
             }
         }
 
-        protected void ChangeCellState(int x_old, int y_old, int x_new, int y_new, bool color, int num)
+        protected virtual void ChangeCellState(int x_old, int y_old, int x_new, int y_new, bool color, int num)
         {
 
             if (num == 1)

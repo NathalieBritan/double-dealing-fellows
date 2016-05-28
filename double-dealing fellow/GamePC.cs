@@ -12,8 +12,42 @@ namespace double_dealing_fellow
 
         public GamePC(object sender) : base (sender)
         {
-          
             
+           
+        }
+
+        protected override void AddPlayers()
+        {
+            first_player = new Player(false, ref board, 5, 5, sender, false);
+            second_player = new Player(true, ref board, 0, 0, sender, true);
+        }
+
+        protected override void ChangeCellState(int x_old, int y_old, int x_new, int y_new, bool color, int num)
+        {
+
+            if (num == 1)
+            {
+                board[x_new, y_new] = new KeyVal<bool, Checker>(true, board[x_old, y_old].Checker);
+
+                if (color == false)
+                {
+                    first_player.cells_taken += 1;
+                    board[x_old, y_old].Checker = new Checker(color, x_old * 80 + 33, y_old * 80 + 56, sender);
+                }
+                else
+                {
+                    second_player.cells_taken += 1;
+                    board[x_old, y_old].Checker = new CheckerPC(color, x_old * 80 + 33, y_old * 80 + 56, sender);
+                }
+
+                CatchRivalCheckers(x_new, y_new, color);
+            }
+            else
+            {
+                board[x_new, y_new] = new KeyVal<bool, Checker>(true, board[x_old, y_old].Checker);
+                board[x_old, y_old] = null;
+                CatchRivalCheckers(x_new, y_new, color);
+            }
         }
 
         protected override void ChangePlayer()
