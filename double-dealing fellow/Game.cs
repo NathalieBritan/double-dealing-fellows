@@ -20,7 +20,6 @@ namespace double_dealing_fellow
             CheckCell.EventHandler = new CheckCell.MyEvent(CheckCellFree);
             ChangeCell.EventHandler = new ChangeCell.MyEvent(ChangeCellState);
             ChangePlayerCount.EventHandler = new ChangePlayerCount.MyEvent(ChangePlayerTakenCells);
-
             this.sender = sender;
             AddPlayers();
             first_player.active = true;
@@ -30,9 +29,10 @@ namespace double_dealing_fellow
         {
             first_player = new Player(false, ref board, 5, 5, sender, false);
             second_player = new Player(true, ref board, 0, 0, sender, false);
+            ChangeBoardCount.EventHandler(first_player.cells_taken, second_player.cells_taken);
         }
 
-        protected virtual bool CheckPlayerActivity(bool color)
+        protected bool CheckPlayerActivity(bool color)
         {
             if (color == false)
             {

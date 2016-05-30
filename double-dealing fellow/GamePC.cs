@@ -20,6 +20,7 @@ namespace double_dealing_fellow
         {
             first_player = new Player(false, ref board, 5, 5, sender, false);
             second_player = new Player(true, ref board, 0, 0, sender, true);
+            ChangeBoardCount.EventHandler(first_player.cells_taken, second_player.cells_taken);
         }
 
         protected override void ChangeCellState(int x_old, int y_old, int x_new, int y_new, bool color, int num)

@@ -42,13 +42,13 @@ namespace double_dealing_fellow
         private void ChangeCount(int first_player, int second_player)
         {
             Sp_Count.Text = "Red Player " + Convert.ToString(first_player) + " : Black Player " + Convert.ToString(second_player);
-            if(first_player == 0)
+            if (first_player == 0 || first_player + second_player == 16 && first_player < second_player)
             {
                 MessageBox.Show("Black player won!!!");
             }
             else
             {
-                if (second_player == 0)
+                if (second_player == 0 || first_player + second_player == 16 && first_player > second_player)
                 {
                     MessageBox.Show("Red player won!!!");
                 }
@@ -89,6 +89,9 @@ namespace double_dealing_fellow
             prsonVsPCToolStripMenuItem.Image = rb_on;
         }
 
-       
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "Help.chm");
+        }
     }
 }

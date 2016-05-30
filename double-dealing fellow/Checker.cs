@@ -23,7 +23,6 @@ namespace double_dealing_fellow
             get; protected set;
         }
         protected PictureBox checker = new PictureBox();
-        protected bool active;
         private bool dragndrop = false;
         private Point loc;
 
@@ -64,7 +63,6 @@ namespace double_dealing_fellow
             int y_old = y;
             y = checker.Top = y_new;
             x = checker.Left = x_new;
-            active = !active;
             if (Math.Abs(((x_old - 23) / 80 - (x - 30) / 80)) == 1 || Math.Abs(((y_old - 46) / 80 - (y - 53) / 80)) == 1)
             {
                 ChangeCell.EventHandler((x_old - 30) / 80, (y_old - 53) / 80, (x - 30) / 80, (y - 53) / 80, color, 1);
@@ -96,21 +94,20 @@ namespace double_dealing_fellow
             checker.Image = picture;
         }
 
-        protected virtual void Mouse_Click(object sender, MouseEventArgs e)
+        protected void Mouse_Click(object sender, MouseEventArgs e)
         { 
-            if (IfPlayerActive.EventHandler(color) && !active)
+            if (IfPlayerActive.EventHandler(color) && !dragndrop)
             {
                 dragndrop = true;
                 (sender as PictureBox).BringToFront();
                 loc = e.Location;
                 (sender as PictureBox).Cursor = System.Windows.Forms.Cursors.Hand;
-                active = !active;
                 return;
             }
 
             int x_change = Math.Abs(((x - 23) / 80 - ((sender as PictureBox).Left + (e.X - loc.X) + 7) / 80));
             int y_change = Math.Abs(((y - 46) / 80 - ((sender as PictureBox).Top + (e.Y - loc.Y) - 16) / 80));
-            if (active && CheckCell.EventHandler(((sender as PictureBox).Left + (e.X - loc.X) + 7) / 80, ((sender as PictureBox).Top +(e.Y - loc.Y) - 16) / 80) &&  (x_change <= 1 && y_change <= 1 || Math.Abs(x_change - y_change) != 1))
+            if (dragndrop && CheckCell.EventHandler(((sender as PictureBox).Left + (e.X - loc.X) + 7) / 80, ((sender as PictureBox).Top +(e.Y - loc.Y) - 16) / 80) &&  (x_change <= 1 && y_change <= 1 || Math.Abs(x_change - y_change) != 1))
             {
                 dragndrop = false;
                 (sender as PictureBox).Cursor = System.Windows.Forms.Cursors.Default;
@@ -120,7 +117,7 @@ namespace double_dealing_fellow
            
         }
 
-        protected virtual void Mouse_Move(object sender, MouseEventArgs e)
+        protected void Mouse_Move(object sender, MouseEventArgs e)
         {
             if (dragndrop == true)
             {
@@ -136,7 +133,7 @@ namespace double_dealing_fellow
             }
         }
 
-        protected virtual void Mouse_Leave(object sender, System.EventArgs t)
+        protected void Mouse_Leave(object sender, System.EventArgs t)
         {
             if (IfPlayerActive.EventHandler(color))
             {

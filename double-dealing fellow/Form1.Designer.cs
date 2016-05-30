@@ -36,8 +36,6 @@
             this.personVsPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prsonVsPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Sp_Date = new System.Windows.Forms.ToolStripStatusLabel();
             this.Sp_Count = new System.Windows.Forms.ToolStripStatusLabel();
@@ -95,26 +93,10 @@
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rulesToolStripMenuItem,
-            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // rulesToolStripMenuItem
-            // 
-            this.rulesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rulesToolStripMenuItem.Image")));
-            this.rulesToolStripMenuItem.Name = "rulesToolStripMenuItem";
-            this.rulesToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.rulesToolStripMenuItem.Text = "Rules";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -180,8 +162,6 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem rulesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel Sp_Date;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripStatusLabel Sp_Count;
